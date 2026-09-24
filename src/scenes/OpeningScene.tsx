@@ -86,59 +86,82 @@ export default function OpeningScene() {
           background:
             stage === "entering" || stage === "entered"
               ? "radial-gradient(ellipse at 54% 46%, transparent 30%, rgba(0,0,0,0.55) 100%)"
-              : "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 70%, rgba(0,0,0,0.2) 100%)",
+              : "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 22%, transparent 62%, rgba(0,0,0,0.28) 100%)",
           transition: "background 1.8s ease",
         }}
       />
 
+      {/* signature — small, top-right, identity only */}
       {(stage === "idle" || stage === "revealing") && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: stage === "idle" ? 1 : 0 }}
-          exit={{ opacity: 0 }}
-          className="absolute right-8 top-[16%] md:right-16 md:top-[18%] text-right max-w-xs md:max-w-sm px-4"
+          className="absolute right-6 top-6 md:right-10 md:top-10 text-right pointer-events-none"
         >
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : -6 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="font-display text-3xl md:text-5xl text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)] tracking-wide"
+            className="font-display text-lg md:text-xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] tracking-wide"
           >
             Neha Biswas
           </motion.p>
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 8 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="font-mono text-[11px] md:text-xs uppercase tracking-[0.25em] text-white/85 mt-3 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : -4 }}
+            transition={{ duration: 1, delay: 0.55 }}
+            className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/90 mt-1 drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]"
           >
             AI Engineer &middot; RAG &amp; LLM Systems
           </motion.p>
+        </motion.div>
+      )}
+
+      {/* welcome — centered, the actual invitation */}
+      {(stage === "idle" || stage === "revealing") && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: stage === "idle" ? 1 : 0 }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+        >
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse 60% 45% at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 70%)",
+            }}
+          />
+
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 8 }}
-            transition={{ duration: 1, delay: 1.05 }}
-            className="font-display italic text-sm md:text-base text-white/75 mt-4 leading-snug drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+            transition={{ duration: 1, delay: 0.85 }}
+            className="relative font-mono text-[11px] md:text-xs uppercase tracking-[0.35em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] mb-4"
           >
-            Building systems,
-            <br />
-            exploring ideas.
+            Welcome
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+            transition={{ duration: 1, delay: 1.05 }}
+            className="relative font-display italic text-xl md:text-3xl text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-md"
+          >
+            Step into Neha&rsquo;s world.
           </motion.p>
 
           <motion.button
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 8 }}
-            transition={{ duration: 1, delay: 1.5 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+            transition={{ duration: 1, delay: 1.4 }}
             onClick={handleEnter}
             disabled={stage !== "idle"}
-            className="group focus-ring pointer-events-auto mt-8 font-display italic text-base md:text-lg text-white/90 hover:text-white inline-flex items-center gap-2"
+            className="group focus-ring relative pointer-events-auto mt-9 font-display italic text-xl md:text-2xl text-white hover:text-white inline-flex items-center gap-2.5 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]"
           >
-            <span className="border-b border-white/40 group-hover:border-white/90 transition-colors pb-0.5">
+            <span className="border-b border-white/60 group-hover:border-white transition-colors pb-0.5">
               Enter
             </span>
             <motion.span
               className="inline-block"
-              animate={{ x: [0, 4, 0] }}
+              animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             >
               &rarr;
