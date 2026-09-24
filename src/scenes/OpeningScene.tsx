@@ -8,7 +8,7 @@ const PATH_VANISHING_POINT = "54% 46%";
 
 type Stage = "black" | "revealing" | "idle" | "entering" | "entered";
 
-export default function OpeningScene() {
+export default function OpeningScene({ onArrived }: { onArrived: () => void }) {
   const [stage, setStage] = useState<Stage>("black");
   const reducedMotion = useReducedMotion();
   const driftControls = useAnimation();
@@ -71,7 +71,10 @@ export default function OpeningScene() {
           transformOrigin: PATH_VANISHING_POINT,
         }}
         onAnimationComplete={() => {
-          if (stage === "entering") setStage("entered");
+          if (stage === "entering") {
+            setStage("entered");
+            onArrived();
+          }
         }}
       />
 
@@ -178,19 +181,6 @@ export default function OpeningScene() {
               </motion.span>
             </motion.button>
           </motion.div>
-        </motion.div>
-      )}
-
-      {stage === "entered" && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <p className="font-display italic text-2xl md:text-3xl text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]">
-            Neha&rsquo;s World
-          </p>
         </motion.div>
       )}
     </div>
