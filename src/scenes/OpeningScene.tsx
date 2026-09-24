@@ -127,46 +127,57 @@ export default function OpeningScene() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse 60% 45% at 50% 50%, rgba(0,0,0,0.4) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 42% 38% at 50% 50%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.32) 55%, transparent 78%)",
             }}
           />
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
-            transition={{ duration: 1, delay: 0.85 }}
-            className="relative font-mono text-[11px] md:text-xs uppercase tracking-[0.35em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] mb-4"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: stage === "idle" ? 1 : 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="relative rounded-3xl px-10 py-10 md:px-16 md:py-12 backdrop-blur-[3px]"
+            style={{ backgroundColor: "rgba(10, 14, 10, 0.22)" }}
           >
-            Welcome
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
-            transition={{ duration: 1, delay: 1.05 }}
-            className="relative font-display italic text-xl md:text-3xl text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] max-w-md"
-          >
-            Step into Neha&rsquo;s world.
-          </motion.p>
-
-          <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
-            transition={{ duration: 1, delay: 1.4 }}
-            onClick={handleEnter}
-            disabled={stage !== "idle"}
-            className="group focus-ring relative pointer-events-auto mt-9 font-display italic text-xl md:text-2xl text-white hover:text-white inline-flex items-center gap-2.5 drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]"
-          >
-            <span className="border-b border-white/60 group-hover:border-white transition-colors pb-0.5">
-              Enter
-            </span>
-            <motion.span
-              className="inline-block"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+              transition={{ duration: 1, delay: 0.85 }}
+              className="font-mono text-[11px] md:text-xs uppercase tracking-[0.4em] text-white mb-4"
+              style={{ textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 0 22px rgba(0,0,0,0.7)" }}
             >
-              &rarr;
-            </motion.span>
-          </motion.button>
+              Welcome
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+              transition={{ duration: 1, delay: 1.05 }}
+              className="font-display italic text-2xl md:text-4xl text-white max-w-md"
+              style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.75)" }}
+            >
+              Step into Neha&rsquo;s world.
+            </motion.p>
+
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : 10 }}
+              transition={{ duration: 1, delay: 1.4 }}
+              onClick={handleEnter}
+              disabled={stage !== "idle"}
+              className="group focus-ring pointer-events-auto mt-9 font-display italic text-xl md:text-2xl text-white hover:text-white inline-flex items-center gap-2.5"
+              style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.75)" }}
+            >
+              <span className="border-b border-white/70 group-hover:border-white transition-colors pb-0.5">
+                Enter
+              </span>
+              <motion.span
+                className="inline-block"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                &rarr;
+              </motion.span>
+            </motion.button>
+          </motion.div>
         </motion.div>
       )}
 
