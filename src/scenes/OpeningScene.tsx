@@ -102,7 +102,7 @@ export default function OpeningScene() {
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : -6 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="font-display text-lg md:text-xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] tracking-wide"
+            className="font-display text-2xl md:text-4xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] tracking-wide"
           >
             Neha Biswas
           </motion.p>
@@ -110,7 +110,7 @@ export default function OpeningScene() {
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: stage === "idle" ? 1 : 0, y: stage === "idle" ? 0 : -4 }}
             transition={{ duration: 1, delay: 0.55 }}
-            className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/90 mt-1 drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]"
+            className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-white mt-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
           >
             AI Engineer &middot; RAG &amp; LLM Systems
           </motion.p>
